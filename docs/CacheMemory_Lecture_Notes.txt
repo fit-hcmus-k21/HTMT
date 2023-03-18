@@ -1,0 +1,47 @@
+2. Assuming a cache of 4K blocks, a four-word block size, and a 32-bit address, find the
+total number of sets and the total number of tag bits for caches that are direct mapped,
+two-way and four-way set associative, and fully associative.
+
+xxxx xxxx xxxx xxxx xxxx xxxx xxxx xx 		xx
+				Block						word
+											
+4 Bytes / block
+-> number of word bits = 2
+
+2^32 Bytes / 4(block size) = 2^30 blocks
+-> number of block bits = 30
+
+- Full associate:
+xxxx xxxx xxxx xxxx xxxx xxxx xxxx xx 		xx
+				Tag/Block					word
+number of tag bits = number of block bits = 30
+
+- Direct mapping:
+xxxx xxxx xxxx xxxx xx		xx xxxx xxxx xx 		xx
+		tag						line
+				Block								word
+2^30 blocks / 2^12 lines = 2^18
+-> number of tag bits = 18
+cache: 4K blocks = 2^12 lines
+-> number of line bits = 12
+
+- 2-way set associate:
+xxxx xxxx xxxx xxxx xxx		x xxxx xxxx xx 		xx
+		tag						set
+				Block							word
+2^12 lines / 2 lines (set size) = 2^11 sets
+-> number of set bits = 11
+2^30 blocks / 2^11 sets = 2^19
+-> number of tag bits = 19
+
+- 4-way set associate:
+xxxx xxxx xxxx xxxx xxxx 	xxxx xxxx xx 		xx
+		tag						set
+				Block							word
+2^12 lines / 4 lines (set size) = 2^10 sets
+-> number of set bits = 10
+2^30 blocks / 2^10 sets = 2^20
+-> number of tag bits = 20
+
+
+
